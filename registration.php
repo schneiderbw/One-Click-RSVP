@@ -49,7 +49,7 @@
             <div class="col">
               <input type="text" class="form-control" placeholder="Title" name="attendee1_title">
             </div>
-            <div class="form-row">
+            <div class="col">
               <input type="text" class="form-control" placeholder="E-Mail Address" name="attendee1_email">
             </div>
           </div>
@@ -66,13 +66,13 @@
             <div class="col">
               <input type="text" class="form-control" placeholder="Title" name="attendee2_title">
             </div>
-            <div class="form-row">
+            <div class="col">
               <input type="text" class="form-control" placeholder="E-Mail Address" name="attendee2_email">
             </div>
-            <input type="hidden" name="companyname" value="<?php echo $companyname; ?>">
-            <input type="hidden" name="tier1_regemail" value="<?php echo $regemail; ?>">
-            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
+          <input type="hidden" name="companyname" value="<?php echo $companyname; ?>">
+          <input type="hidden" name="tier1_regemail" value="<?php echo $regemail; ?>">
+          <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
     <?php endif; ?>
