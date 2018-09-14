@@ -15,6 +15,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/application.css"
   </head>
+  <?php
+    //Handle form submissions here
+    if ($_GET["submit"] == "true") {
+      dbRowInsert("tier1_rsvp",$_POST);
+    }
+  ?>
   <body>
     <?php if ($suppliertype == "tier1"): ?>
       <?php $companyname = mysqli_query($sql_conn, "SELECT company FROM tier1_invitations WHERE email = $regemail"); ?>
@@ -28,7 +34,7 @@
         Attendees
         <small class="text-muted">Please let us know who will be in attendance. Minimum 1, Maximum 2.</small>
       </h3>
-      <form>
+      <form action="registration.php?submit=true&type=tier1" method="post">
         <div class="form-group">
           <h4>Attendee 1<small class="text-muted">Required</small></h4>
           <div class="form-row">
@@ -63,7 +69,8 @@
             <div class="form-row">
               <input type="text" class="form-control" placeholder="E-Mail Address" name="attendee2_email">
             </div>
-            <input type="hidden" name="company" value="<?php echo $companyname; ?>">
+            <input type="hidden" name="companyname" value="<?php echo $companyname; ?>">
+            <input type="hidden" name="tier1_regemail" value="<?php echo $regemail; ?>">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
