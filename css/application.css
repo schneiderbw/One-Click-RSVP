@@ -8,3 +8,12 @@ body {
 h1 {
   padding-top: 1.5rem;
 }
+form h4 {
+  padding-top: 0.5em;
+}
+form input {
+  margin: .3em;
+}
+form button {
+  margin: .3em;
+}

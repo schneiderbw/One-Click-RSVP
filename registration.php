@@ -31,51 +31,56 @@
         <h2>Tier 1 Suppliers</h2>
       </div>
 
-      <h3>
-        Attendees
-        <small class="text-muted">Please let us know who will be in attendance. Minimum 1, Maximum 2.</small>
-      </h3>
-      <form action="registration.php?submit=true&type=tier1" method="post">
-        <div class="form-group">
-          <h4>Attendee 1<small class="text-muted">Required</small></h4>
-          <div class="form-row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="First Name" name="attendee1_fname">
+      <div class="container">
+        <h3>
+          Attendees
+          <small class="text-muted">Please let us know who will be in attendance. Minimum 1, Maximum 2.</small>
+        </h3>
+        <form action="registration.php?submit=true&type=tier1" method="post">
+          <div class="form-group">
+            <h4>
+              Attendee 1
+              <small class="text-muted">Required</small>
+            </h4>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First Name" name="attendee1_fname">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last Name" name="attendee1_lname">
+              </div>
             </div>
-            <div class="col">
-              <input type="text" class="form-control" placehoder="Last Name" name="attendee1_lname">
+            <div class="form-row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Title" name="attendee1_title">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="E-Mail Address" name="attendee1_email">
+              </div>
             </div>
+            <h4>Attendee 2</h4>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First Name" name="attendee2_fname">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last Name" name="attendee2_lname">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Title" name="attendee2_title">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="E-Mail Address" name="attendee2_email">
+              </div>
+            </div>
+            <input type="hidden" name="companyname" value="<?php echo $companyname; ?>">
+            <input type="hidden" name="tier1_regemail" value="<?php echo $regemail; ?>">
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
-          <div class="form-row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Title" name="attendee1_title">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="E-Mail Address" name="attendee1_email">
-            </div>
-          </div>
-          <h4>Attendee 2</h4>
-          <div class="form-row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="First Name" name="attendee2_fname">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placehoder="Last Name" name="attendee2_lname">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Title" name="attendee2_title">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="E-Mail Address" name="attendee2_email">
-            </div>
-          </div>
-          <input type="hidden" name="companyname" value="<?php echo $companyname; ?>">
-          <input type="hidden" name="tier1_regemail" value="<?php echo $regemail; ?>">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </form>
+        </form>
+      </div>
     <?php endif; ?>
   </body>
 </html>
