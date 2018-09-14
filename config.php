@@ -5,7 +5,7 @@ $companyname = "Honda North America";
 $eventname = "Honda Partnership Network 2018";
 $eventdatestring = "";
 $eventlocation = "";
-$headerlogo = "./assets/header.png"
+$headerlogo = "./assets/header.png";
 
 // MySQL Connection Information
 $sql_servername = "localhost";
