@@ -36,6 +36,7 @@
           Attendees
           <small class="text-muted">Please let us know who will be in attendance. Minimum 1, Maximum 2.</small>
         </h3>
+        <p>To access your schedule for this event, please submit your attendees first.</p>
         <form action="registration.php?submit=true&type=tier1" method="post">
           <div class="form-group">
             <h4>
