@@ -19,6 +19,7 @@
     //Handle form submissions here
     if ($_GET["submit"] == "true") {
       dbRowInsert("tier1_rsvp",$_POST);
+      print_r($_POST);
     }
   ?>
   <body>
