@@ -18,6 +18,12 @@ if ($sql_conn->connect_error) {
   die("Connection failed: " . $sql_conn->connect_error);
 }
 
+if ($mysqli->ping()) {
+    printf ("Our connection is ok!\n");
+} else {
+    printf ("Error: %s\n", $mysqli->error);
+}
+
 //mysql functions
 function dbRowInsert($table_name, $form_data)
 {
