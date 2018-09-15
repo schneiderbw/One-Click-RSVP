@@ -45,7 +45,7 @@
           <small class="text-muted">Please let us know who will be in attendance. Minimum 1, Maximum 2.</small>
         </h3>
         <p>To access your schedule for this event, please submit your attendees first.</p>
-        <form action="registration.php?submit=true&type=tier1" method="post">
+        <form action="registration.php?submit=true&type=tier1" method="post" class="needs-validation" novalidate>
           <div class="form-group">
             <h4>
               Attendee 1
@@ -53,35 +53,43 @@
             </h4>
             <div class="form-row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="First Name" name="attendee1_fname">
+                <label for="attendee1_fname">First Name</label>
+                <input type="text" class="form-control" placeholder="First Name" id="attendee1_fname"  name="attendee1_fname" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Last Name" name="attendee1_lname">
+                <label for="attendee1_lname">Last Name</label>
+                <input type="text" class="form-control" placeholder="Last Name" id="attendee1_lname" name="attendee1_lname" required>
               </div>
             </div>
             <div class="form-row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Title" name="attendee1_title">
+                <label for="attendee1_title">Title</label>
+                <input type="text" class="form-control" placeholder="Title" id="attendee1_title" name="attendee1_title" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="E-Mail Address" name="attendee1_email">
+                <label for="attendee1_email">E-Mail Address</label>
+                <input type="email" class="form-control" placeholder="E-Mail Address" id="attendee1_email" name="attendee1_email" required>
               </div>
             </div>
             <h4>Attendee 2</h4>
             <div class="form-row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="First Name" name="attendee2_fname">
+                <label for="attendee2_fname">First Name</label>
+                <input type="text" class="form-control" placeholder="First Name" id="attendee2_fname" name="attendee2_fname">
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Last Name" name="attendee2_lname">
+                <label for="attendee2_lname">Last Name</label>
+                <input type="text" class="form-control" placeholder="Last Name" id="attendee2_lname" name="attendee2_lname">
               </div>
             </div>
             <div class="form-row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Title" name="attendee2_title">
+                <label for="attendee2_title">Title</label>
+                <input type="text" class="form-control" placeholder="Title" id="attendee2_title" name="attendee2_title">
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="E-Mail Address" name="attendee2_email">
+                <label for="attendee2_email">E-Mail Address</label>
+                <input type="email" class="form-control" placeholder="E-Mail Address" id="attendee2_email" name="attendee2_email">
               </div>
             </div>
             <input type="hidden" name="companyname" value="<?php echo $companyname; ?>">
@@ -89,6 +97,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </form>
+
       </div>
     <?php elseif ($suppliertype == "diverse"): ?>
       <div class="header">
@@ -103,7 +112,7 @@
           <small class="text-muted">Please let us know who will be in attendance.</small>
         </h3>
         <p>To access your schedule for this event, please submit your attendee first.</p>
-        <form action="registration.php?submit=true&type=tier1" method="post">
+        <form action="registration.php?submit=true&type=tier1" method="post" class="needs-validation" novalidate>
           <div class="form-group">
             <h4>
               Attendee
@@ -111,23 +120,28 @@
             </h4>
             <div class="form-row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="First Name" name="attendee1_fname">
+                <label for="attendee1_fname">First Name</label>
+                <input type="text" class="form-control" placeholder="First Name" id="attendee1_fname"  name="attendee1_fname" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Last Name" name="attendee1_lname">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Title" name="attendee1_title">
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="E-Mail Address" name="attendee1_email">
+                <label for="attendee1_lname">Last Name</label>
+                <input type="text" class="form-control" placeholder="Last Name" id="attendee1_lname" name="attendee1_lname" required>
               </div>
             </div>
             <div class="form-row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Company Name" name="companyname">
+                <label for="attendee1_title">Title</label>
+                <input type="text" class="form-control" placeholder="Title" id="attendee1_title" name="attendee1_title" required>
+              </div>
+              <div class="col">
+                <label for="attendee1_email">E-Mail Address</label>
+                <input type="email" class="form-control" placeholder="E-Mail Address" id="attendee1_email" name="attendee1_email" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col">
+                <label for="companyname">Company Name</label>
+                <input type="text" class="form-control" placeholder="Company Name" id="companyname" name="companyname">
               </div>
             </div>
             <input type="hidden" name="diverse_regemail" value="<?php echo $regemail; ?>">
@@ -136,5 +150,25 @@
         </form>
       </div>
     <?php endif; ?>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
   </body>
 </html>
