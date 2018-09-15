@@ -20,11 +20,9 @@
     if ($_GET["submit"] == "true") {
       if ($_GET["type"] == "tier1") {
         dbRowInsert("tier1_rsvp",$_POST);
-        print_r($_POST);
       }
       if ($_GET["type"] == "diverse") {
         dbRowInsert("diverse_rsvp",$_POST);
-        print_r($_POST);
       }
     }
   ?>

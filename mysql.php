@@ -14,10 +14,12 @@ $sql_conn = mysqli_connect($servername, $username, $password, $dbname);
 
 //Check connection
 
-if ($sql_conn->ping()) {
-    printf ("Our connection is ok!\n");
-} else {
-    printf ("Error: %s\n", $sql_conn->error);
+if ($_GET["testing"] == "1") {
+  if ($sql_conn->ping()) {
+      printf ("Our connection is ok!\n");
+  } else {
+      printf ("Error: %s\n", $sql_conn->error);
+  }
 }
 
 //mysql functions
