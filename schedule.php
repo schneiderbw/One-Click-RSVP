@@ -4,7 +4,7 @@
 
   //Let's make the GET information friendlier to access
   $suppliertype = $_GET["type"];
-  $regemail = $_GET["email"];
+  $email = $_GET["email"];
 
 ?>
 
@@ -39,6 +39,30 @@
       </div>
     </div>
     <?php exit; ?>
+    <?php endif; ?>
+    <?php if($suppliertype == "tier1"): ?>
+      <?php if(empty($email)): ?>
+    <div class="container">
+      <h3>Please enter your e-mail address</h3>
+      <form action="schedule.php?type=tier1" method="get" class="needs-validation" novalidate>
+        <div class="form-group">
+          <div class="form-row justify-content-center">
+            <input type="email" class="form-control" placeholder="E-Mail Address" id="email" name="email" required>
+            <div class="invalid-feedback">
+              A valid e-mail address is required to proceed.
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+      <?php elseif($email): ?>
+        // Use JavaScript to query schedule-query.php for the user's schedule
+      <?php endif; ?>
+    <?php elseif($suppliertype == "diverse"): ?>
+      <?php if(empty($email)): ?>
+      <?php elseif($email): ?>
+      <?php endif; ?>
     <?php endif; ?>
     </div>
   </body>
