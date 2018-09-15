@@ -20,6 +20,7 @@
     if ($_GET["submit"] == "true") {
       if ($_GET["type"] == "tier1") {
         $query = "INSERT INTO tier1_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,attendee2_fname,attendee2_lname,attendee2_title,attendee2_email,companyname,tier1_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['attendee2_fname']."','".$_POST['attendee2_lname']."','".$_POST['attendee2_title']."','".$_POST['attendee2_email']."','".$_POST['companyname']."','".$_POST['tier1_regemail']."');";
+        echo $query;
         if(mysqli_query($sql_conn,$query)) {
           echo "Record Inserted";
         }
