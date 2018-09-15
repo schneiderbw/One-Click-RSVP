@@ -7,6 +7,25 @@
   $regemail = $_GET["email"];
 ?>
 
+<?php
+  //Handle form submissions here
+  if ($_GET["submit"] == "true") {
+    if ($_GET["type"] == "tier1") {
+      $query = "INSERT INTO tier1_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,attendee2_fname,attendee2_lname,attendee2_title,attendee2_email,companyname,tier1_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['attendee2_fname']."','".$_POST['attendee2_lname']."','".$_POST['attendee2_title']."','".$_POST['attendee2_email']."','".$_POST['companyname']."','".$_POST['tier1_regemail']."');";
+      if(mysqli_query($sql_conn,$query)) {
+        $successful = True;
+        header("Location: ./schedule.php?type=tier1&email=$_POST['tier1_regemail']");
+      }
+    }
+    if ($_GET["type"] == "diverse") {
+      $query = "INSERT INTO diverse_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,companyname,tier1_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['companyname']."','".$_POST['tier1_regemail']."');";
+      if(mysqli_query($sql_conn,$query)) {
+        $successful = True;
+        header("Location: ./schedule.php?type=tier1&email=$_POST['diverse_regemail']");
+    }
+  }
+?>
+
 <html>
   <head>
     <title><?php echo $companyname; ?> | <?php echo $eventname; ?></title>
@@ -15,22 +34,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/application.css"
   </head>
-  <?php
-    //Handle form submissions here
-    if ($_GET["submit"] == "true") {
-      if ($_GET["type"] == "tier1") {
-        $query = "INSERT INTO tier1_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,attendee2_fname,attendee2_lname,attendee2_title,attendee2_email,companyname,tier1_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['attendee2_fname']."','".$_POST['attendee2_lname']."','".$_POST['attendee2_title']."','".$_POST['attendee2_email']."','".$_POST['companyname']."','".$_POST['tier1_regemail']."');";
-        if(mysqli_query($sql_conn,$query)) {
-          $successful = True;
-        }
-      }
-      if ($_GET["type"] == "diverse") {
-        $query = "INSERT INTO diverse_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,companyname,tier1_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['companyname']."','".$_POST['tier1_regemail']."');";
-        if(mysqli_query($sql_conn,$query)) {
-          $successful = True;
-      }
-    }
-  ?>
   <body>
     <?php if ($suppliertype == "tier1"): ?>
       <?php $companyname = mysqli_query($sql_conn, "SELECT company FROM tier1_invitations WHERE email = $regemail"); ?>

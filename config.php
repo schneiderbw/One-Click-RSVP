@@ -14,6 +14,6 @@ $sql_username = "hondarsvp2018";
 $sql_password = "l8ovo>11Zb?p'c_pXO1RCGbo|]jP5njp8)N<XB-\TU+U9ZOL";
 
 // Turn on error messages
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+ini_set('display_errors', 1);
 
  ?>
