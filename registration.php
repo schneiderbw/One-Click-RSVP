@@ -13,13 +13,13 @@
     if ($_GET["type"] == "tier1") {
       $query = "INSERT INTO tier1_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,attendee2_fname,attendee2_lname,attendee2_title,attendee2_email,companyname,tier1_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['attendee2_fname']."','".$_POST['attendee2_lname']."','".$_POST['attendee2_title']."','".$_POST['attendee2_email']."','".$_POST['companyname']."','".$_POST['tier1_regemail']."');";
       if(mysqli_query($sql_conn,$query)) {
-        $successful = True;
+        $sqlsuccessful = True;
       }
     }
     if ($_GET["type"] == "diverse") {
       $query = "INSERT INTO diverse_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,companyname,tier1_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['companyname']."','".$_POST['tier1_regemail']."');";
       if(mysqli_query($sql_conn,$query)) {
-        $successful = True;
+        $sqlsuccessful = True;
       }
     }
   }
@@ -42,6 +42,13 @@
         <h2>Tier 1 Suppliers</h2>
       </div>
 
+      <?php if($sqlsuccessful): ?>
+      <h3 class="text-center">Thank you for your submission!  Please wait while we get you your schedule.</h3>
+      <script>
+        window.location.href = "./schedule.php?type=tier1&email=<?php echo $_POST['tier1_regemail']; ?>"
+      </script>
+      <?php endif; exit; ?>
+      
       <div class="container">
         <h3>
           Attendees
@@ -132,6 +139,13 @@
         <h1>Attendee Registration</h1>
         <h2>Diverse Suppliers</h2>
       </div>
+
+      <?php if($sqlsuccessful): ?>
+      <h3 class="text-center">Thank you for your submission!  Please wait while we get you your schedule.</h3>
+      <script>
+        window.location.href = "./schedule.php?type=tier1&email=<?php echo $_POST['tier1_regemail']; ?>"
+      </script>
+      <?php endif; exit; ?>
 
       <div class="container">
         <h3>
