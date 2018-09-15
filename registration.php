@@ -147,7 +147,7 @@
       <?php if($sqlsuccessful): ?>
       <h3 class="text-center">Thank you for your submission!  Please wait while we get you your schedule.</h3>
       <script>
-        window.location.href = "./schedule.php?type=tier1&email=<?php echo urlencode($_POST['diverse_regemail']); ?>";
+        window.location.href = "./schedule.php?type=diverse&email=<?php echo urlencode($_POST['diverse_regemail']); ?>";
       </script>
       <?php exit; endif; ?>
 
@@ -157,7 +157,7 @@
           <small class="text-muted">Please let us know who will be in attendance.</small>
         </h3>
         <p>To access your schedule for this event, please submit your attendee first.</p>
-        <form action="registration.php?submit=true&type=tier1" method="post" class="needs-validation" novalidate>
+        <form action="registration.php?submit=true&type=diverse" method="post" class="needs-validation" novalidate>
           <div class="form-group">
             <h4>
               Attendee
