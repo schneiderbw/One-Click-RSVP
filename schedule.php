@@ -43,8 +43,8 @@
     <?php if($suppliertype == "tier1"): ?>
       <?php if(empty($email)): ?>
     <div class="container">
-      <h3>Please enter your e-mail address</h3>
       <form action="schedule.php?type=tier1" method="get" class="needs-validation" novalidate>
+        <h4>Please enter your e-mail address</h3>
         <div class="form-group">
           <div class="form-row justify-content-center">
             <input type="email" class="form-control" placeholder="E-Mail Address" id="email" name="email" required>
