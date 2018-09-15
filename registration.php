@@ -18,8 +18,14 @@
   <?php
     //Handle form submissions here
     if ($_GET["submit"] == "true") {
-      dbRowInsert("tier1_rsvp",$_POST);
-      print_r($_POST);
+      if ($_GET["type"] == "tier1") {
+        dbRowInsert("tier1_rsvp",$_POST);
+        print_r($_POST);
+      }
+      if ($_GET["type"] == "diverse") {
+        dbRowInsert("diverse_rsvp",$_POST);
+        print_r($_POST);
+      }
     }
   ?>
   <body>
@@ -78,6 +84,51 @@
             </div>
             <input type="hidden" name="companyname" value="<?php echo $companyname; ?>">
             <input type="hidden" name="tier1_regemail" value="<?php echo $regemail; ?>">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    <?php elseif ($suppliertype == "diverse"): ?>
+      <div class="header">
+        <img src="<?php echo $headerlogo; ?>">
+        <h1>Attendee Registration</h1>
+        <h2>Diverse Suppliers</h2>
+      </div>
+
+      <div class="container">
+        <h3>
+          Attendees
+          <small class="text-muted">Please let us know who will be in attendance.</small>
+        </h3>
+        <p>To access your schedule for this event, please submit your attendee first.</p>
+        <form action="registration.php?submit=true&type=tier1" method="post">
+          <div class="form-group">
+            <h4>
+              Attendee
+              <small class="text-muted">Required</small>
+            </h4>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First Name" name="attendee1_fname">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last Name" name="attendee1_lname">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Title" name="attendee1_title">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="E-Mail Address" name="attendee1_email">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Company Name" name="companyname">
+              </div>
+            </div>
+            <input type="hidden" name="diverse_regemail" value="<?php echo $regemail; ?>">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </form>
