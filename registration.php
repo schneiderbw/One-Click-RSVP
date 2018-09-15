@@ -22,6 +22,7 @@
       if(mysqli_query($sql_conn,$query)) {
         $successful = True;
         header("Location: ./schedule.php?type=tier1&email=$_POST['diverse_regemail']");
+      }
     }
   }
 ?>
