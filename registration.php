@@ -37,7 +37,8 @@
     <?php if ($suppliertype == "tier1"): ?>
       <?php
         $query = "SELECT company FROM tier1_invitations WHERE email = '$regemail';";
-        $company = mysqli_query($sql_conn, $query);
+        $result = mysqli_fetch_array(mysqli_query($sql_conn, $query),MYSQLI_ASSOC);
+        $usercompany = $result["company"];
       ?>
       <div class="header">
         <img src="<?php echo $headerlogo; ?>">
@@ -129,7 +130,7 @@
                 </div>
               </div>
             </div>
-            <input type="hidden" name="companyname" value="<?php echo $company; ?>">
+            <input type="hidden" name="companyname" value="<?php echo $usercompany; ?>">
             <input type="hidden" name="tier1_regemail" value="<?php echo $regemail; ?>">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
