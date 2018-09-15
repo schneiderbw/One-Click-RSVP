@@ -48,6 +48,7 @@
         <div class="form-group">
           <div class="form-row justify-content-center">
             <input type="email" class="form-control" placeholder="E-Mail Address" id="email" name="email" required>
+            <input type="hidden" name="type" value="<?php echo $suppliertype?>">
             <div class="invalid-feedback">
               A valid e-mail address is required to proceed.
             </div>
