@@ -45,7 +45,7 @@
       <?php if($sqlsuccessful): ?>
       <h3 class="text-center">Thank you for your submission!  Please wait while we get you your schedule.</h3>
       <script>
-        window.location.href = "./schedule.php?type=tier1&email=<?php echo $_POST['tier1_regemail']; ?>";
+        window.location.href = "./schedule.php?type=tier1&email=<?php echo urlencode($_POST['tier1_regemail']); ?>";
       </script>
       <?php exit; endif; ?>
 
@@ -143,7 +143,7 @@
       <?php if($sqlsuccessful): ?>
       <h3 class="text-center">Thank you for your submission!  Please wait while we get you your schedule.</h3>
       <script>
-        window.location.href = "./schedule.php?type=tier1&email=<?php echo $_POST['diverse_regemail']; ?>";
+        window.location.href = "./schedule.php?type=tier1&email=<?php echo urlencode($_POST['diverse_regemail']); ?>";
       </script>
       <?php exit; endif; ?>
 
