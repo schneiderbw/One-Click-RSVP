@@ -35,7 +35,7 @@
   </head>
   <body>
     <?php if ($suppliertype == "tier1"): ?>
-      <?php $companyname = mysqli_query($sql_conn, "SELECT company FROM tier1_invitations WHERE email = $regemail"); ?>
+      <?php $company = mysqli_query($sql_conn, "SELECT company FROM tier1_invitations WHERE email = \'$regemail\';"); ?>
       <div class="header">
         <img src="<?php echo $headerlogo; ?>">
         <h1>Attendee Registration</h1>
