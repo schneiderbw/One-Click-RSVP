@@ -126,7 +126,7 @@
                 </div>
               </div>
             </div>
-            <input type="hidden" name="companyname" value="<?php echo $companyname; ?>">
+            <input type="hidden" name="companyname" value="<?php echo $company; ?>">
             <input type="hidden" name="tier1_regemail" value="<?php echo $regemail; ?>">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
