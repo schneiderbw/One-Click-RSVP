@@ -47,8 +47,8 @@
       <script>
         window.location.href = "./schedule.php?type=tier1&email=<?php echo $_POST['tier1_regemail']; ?>"
       </script>
-      <?php endif; exit; ?>
-      
+      <?php exit; endif; ?>
+
       <div class="container">
         <h3>
           Attendees
@@ -145,7 +145,7 @@
       <script>
         window.location.href = "./schedule.php?type=tier1&email=<?php echo $_POST['tier1_regemail']; ?>"
       </script>
-      <?php endif; exit; ?>
+      <?php exit; endif; ?>
 
       <div class="container">
         <h3>
