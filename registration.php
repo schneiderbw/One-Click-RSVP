@@ -10,13 +10,13 @@
 <?php
   //Handle form submissions here
   if ($_GET["submit"] == "true") {
-    if ($_GET["type"] == "tier1") {
+    if ($suppliertype == "tier1") {
       $query = "INSERT INTO tier1_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,attendee2_fname,attendee2_lname,attendee2_title,attendee2_email,companyname,tier1_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['attendee2_fname']."','".$_POST['attendee2_lname']."','".$_POST['attendee2_title']."','".$_POST['attendee2_email']."','".$_POST['companyname']."','".$_POST['tier1_regemail']."');";
       if(mysqli_query($sql_conn,$query)) {
         $sqlsuccessful = True;
       }
     }
-    if ($_GET["type"] == "diverse") {
+    if ($suppliertype == "diverse") {
       $query = "INSERT INTO diverse_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,companyname,tier1_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['companyname']."','".$_POST['tier1_regemail']."');";
       if(mysqli_query($sql_conn,$query)) {
         $sqlsuccessful = True;
