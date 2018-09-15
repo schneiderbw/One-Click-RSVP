@@ -55,20 +55,32 @@
               <div class="col">
                 <label for="attendee1_fname">First Name</label>
                 <input type="text" class="form-control" placeholder="First Name" id="attendee1_fname"  name="attendee1_fname" required>
+                <div class="invalid-feedback">
+                  First Name is required.
+                </div>
               </div>
               <div class="col">
                 <label for="attendee1_lname">Last Name</label>
                 <input type="text" class="form-control" placeholder="Last Name" id="attendee1_lname" name="attendee1_lname" required>
+                <div class="invalid-feedback">
+                  Last Name is required.
+                </div>
               </div>
             </div>
             <div class="form-row">
               <div class="col">
                 <label for="attendee1_title">Title</label>
                 <input type="text" class="form-control" placeholder="Title" id="attendee1_title" name="attendee1_title" required>
+                <div class="invalid-feedback">
+                  Title is required.
+                </div>
               </div>
               <div class="col">
                 <label for="attendee1_email">E-Mail Address</label>
                 <input type="email" class="form-control" placeholder="E-Mail Address" id="attendee1_email" name="attendee1_email" required>
+                <div class="invalid-feedback">
+                  E-Mail Address is required.
+                </div>
               </div>
             </div>
             <h4>Attendee 2</h4>
@@ -76,20 +88,32 @@
               <div class="col">
                 <label for="attendee2_fname">First Name</label>
                 <input type="text" class="form-control" placeholder="First Name" id="attendee2_fname" name="attendee2_fname">
+                <div class="invalid-feedback">
+                  First Name is required.
+                </div>
               </div>
               <div class="col">
                 <label for="attendee2_lname">Last Name</label>
                 <input type="text" class="form-control" placeholder="Last Name" id="attendee2_lname" name="attendee2_lname">
+                <div class="invalid-feedback">
+                  Last Name is required.
+                </div>
               </div>
             </div>
             <div class="form-row">
               <div class="col">
                 <label for="attendee2_title">Title</label>
                 <input type="text" class="form-control" placeholder="Title" id="attendee2_title" name="attendee2_title">
+                <div class="invalid-feedback">
+                  Title is required.
+                </div>
               </div>
               <div class="col">
                 <label for="attendee2_email">E-Mail Address</label>
                 <input type="email" class="form-control" placeholder="E-Mail Address" id="attendee2_email" name="attendee2_email">
+                <div class="invalid-feedback">
+                  E-Mail Address is required.
+                </div>
               </div>
             </div>
             <input type="hidden" name="companyname" value="<?php echo $companyname; ?>">
@@ -122,26 +146,41 @@
               <div class="col">
                 <label for="attendee1_fname">First Name</label>
                 <input type="text" class="form-control" placeholder="First Name" id="attendee1_fname"  name="attendee1_fname" required>
+                <div class="invalid-feedback">
+                  First Name is required.
+                </div>
               </div>
               <div class="col">
                 <label for="attendee1_lname">Last Name</label>
                 <input type="text" class="form-control" placeholder="Last Name" id="attendee1_lname" name="attendee1_lname" required>
+                <div class="invalid-feedback">
+                  Last Name is required.
+                </div>
               </div>
             </div>
             <div class="form-row">
               <div class="col">
                 <label for="attendee1_title">Title</label>
                 <input type="text" class="form-control" placeholder="Title" id="attendee1_title" name="attendee1_title" required>
+                <div class="invalid-feedback">
+                  Title is required.
+                </div>
               </div>
               <div class="col">
                 <label for="attendee1_email">E-Mail Address</label>
                 <input type="email" class="form-control" placeholder="E-Mail Address" id="attendee1_email" name="attendee1_email" required>
+                <div class="invalid-feedback">
+                  E-Mail Address is required.
+                </div>
               </div>
             </div>
             <div class="form-row">
               <div class="col">
                 <label for="companyname">Company Name</label>
                 <input type="text" class="form-control" placeholder="Company Name" id="companyname" name="companyname">
+                <div class="invalid-feedback">
+                  Company Name is required.
+                </div>
               </div>
             </div>
             <input type="hidden" name="diverse_regemail" value="<?php echo $regemail; ?>">
