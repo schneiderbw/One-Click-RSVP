@@ -62,6 +62,21 @@
       <?php endif; ?>
     <?php elseif($suppliertype == "diverse"): ?>
       <?php if(empty($email)): ?>
+        <div class="container">
+          <form action="schedule.php?type=tier1" method="get" class="needs-validation" novalidate>
+            <h4>Please enter your e-mail address</h3>
+            <div class="form-group">
+              <div class="form-row justify-content-center">
+                <input type="email" class="form-control" placeholder="E-Mail Address" id="email" name="email" required>
+                <input type="hidden" name="type" value="<?php echo $suppliertype?>">
+                <div class="invalid-feedback">
+                  A valid e-mail address is required to proceed.
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
       <?php elseif($email): ?>
       <?php endif; ?>
     <?php endif; ?>
