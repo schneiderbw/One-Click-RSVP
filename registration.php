@@ -164,7 +164,7 @@
                   Yes. I will be in attendance.
                 </label>
               </div>
-              <div class="col">
+              <div>
                 <input class="form-check-input" type="radio" name="rsvp_response" id="rsvp_response2" value="no" required>
                 <label class="form-check-label" for="rsvp_response1">
                   No. I will not be in attendance.
