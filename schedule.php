@@ -58,7 +58,18 @@
       </form>
     </div>
       <?php elseif($email): ?>
-        // Use JavaScript to query schedule-query.php for the user's schedule
+    <div class="container">
+      <table class="table table-bordered table-striped" id="schedule_table">
+        <tr>
+          <th>Time</th>
+          <th>Company</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>E-Mail</th>
+          <th>Opportunity Type</th>
+        </tr>
+      </table>
+    </div>
       <?php endif; ?>
     <?php elseif($suppliertype == "diverse"): ?>
       <?php if(empty($email)): ?>
@@ -78,8 +89,57 @@
           </form>
         </div>
       <?php elseif($email): ?>
+    <div class="container">
+      <table class="table table-bordered table-striped" id="schedule_table">
+        <tr>
+          <th>Time</th>
+          <th>Company</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>E-Mail</th>
+          <th>Opportunity Type</th>
+        </tr>
+      </table>
+    </div>
       <?php endif; ?>
     <?php endif; ?>
     </div>
   </body>
+  <?php if($suppliertype == "tier1"): ?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $.getJSON("schedule-query.php?type=<?php echo $suppliertype; ?>&email=<?php echo $email; ?>", function(data){
+        var meeting_data = '';
+        $.each(data, function(key, value){
+          meeting_data += '<tr>';
+          meeting_data += '<td>'+value.meetingtime+'</td>';
+          meeting_data += '<td>'+value.diverse_company+'</td>';
+          meeting_data += '<td>'+value.diverse_fname+'</td>';
+          meeting_data += '<td>'+value.diverse_lname+'</td>';
+          meeting_data += '<td>'+value.diverse_email+'</td>';
+          meeting_data += '<td>'+value.capability+'</td>';
+        });
+        $('#schedule_table').append(meeting_data);
+      });
+    });
+  </script>
+  <?php elseif($suppliertype == "diverse"): ?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $.getJSON("schedule-query.php?type=<?php echo $suppliertype; ?>&email=<?php echo $email; ?>", function(data){
+        var meeting_data = '';
+        $.each(data, function(key, value){
+          meeting_data += '<tr>';
+          meeting_data += '<td>'+value.meetingtime+'</td>';
+          meeting_data += '<td>'+value.tier1_company+'</td>';
+          meeting_data += '<td>'+value.tier1_fname+'</td>';
+          meeting_data += '<td>'+value.tier1_lname+'</td>';
+          meeting_data += '<td>'+value.tier1_email+'</td>';
+          meeting_data += '<td>'+value.capability+'</td>';
+        });
+        $('#schedule_table').append(meeting_data);
+      });
+    });
+  </script>
+  <?php endif; ?>
 </html>
