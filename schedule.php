@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-9ralMzdK1QYsk4yBY680hmsb4/hJ98xK3w0TIaJ3ll4POWpWUYaA2bRjGGujGT8w" crossorigin="anonymous">
     <link rel="stylesheet" href="css/application.css"></link>
   </head>
   <body>
@@ -61,11 +62,8 @@
     </div>
       <?php elseif($email): ?>
     <div class="container">
-      <div class="row header" id="loadscreen">
-        <div class="loader"></div>
-        <div class="col">
-          <h3>Please wait while we gather your schedule...</h3>
-        </div>
+      <div class="header" id="loadscreen">
+        <h3><i class="fas fa-spinner-third spin"></i> Please wait while we gather your schedule...</h3>
       </div>
       <table class="table table-bordered table-striped hidden" id="schedule_table">
         <tr>
@@ -98,11 +96,8 @@
         </div>
       <?php elseif($email): ?>
     <div class="container">
-      <div class="row header" id="loadscreen">
-        <div class="loader"></div>
-        <div class="col">
-          <h3>Please wait while we gather your schedule...</h3>
-        </div>
+      <div class="header" id="loadscreen">
+          <h3><i class="fas fa-spinner-third spin"></i> Please wait while we gather your schedule...</h3>
       </div>
       <table class="table table-bordered table-striped hidden" id="schedule_table">
         <tr>
