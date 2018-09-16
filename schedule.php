@@ -61,7 +61,13 @@
     </div>
       <?php elseif($email): ?>
     <div class="container">
-      <table class="table table-bordered table-striped" id="schedule_table">
+      <div class="row header" id="loadscreen">
+        <div class="loader"></div>
+        <div class="col">
+          <h3>Please wait while we gather your schedule...</h3>
+        </div>
+      </div>
+      <table class="table table-bordered table-striped hidden" id="schedule_table">
         <tr>
           <th>Time</th>
           <th>Company</th>
@@ -92,7 +98,13 @@
         </div>
       <?php elseif($email): ?>
     <div class="container">
-      <table class="table table-bordered table-striped" id="schedule_table">
+      <div class="row header" id="loadscreen">
+        <div class="loader"></div>
+        <div class="col">
+          <h3>Please wait while we gather your schedule...</h3>
+        </div>
+      </div>
+      <table class="table table-bordered table-striped hidden" id="schedule_table">
         <tr>
           <th>Time</th>
           <th>Company</th>
@@ -122,6 +134,10 @@
       }
       return time.join (''); // return adjusted time or original string
     }
+    $(document).ready(function(){
+      $("div#loadscreen").addClass("hidden");
+      $("table#schedule_table").removeClass("hidden");
+    });
   </script>
   <?php if($suppliertype == "tier1"): ?>
   <script type="text/javascript">
