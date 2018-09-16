@@ -31,6 +31,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-9ralMzdK1QYsk4yBY680hmsb4/hJ98xK3w0TIaJ3ll4POWpWUYaA2bRjGGujGT8w" crossorigin="anonymous">
     <link rel="stylesheet" href="css/application.css"></link>
   </head>
   <body>
@@ -47,7 +49,7 @@
       </div>
 
       <?php if($sqlsuccessful): ?>
-      <h3 class="text-center">Thank you for your submission!  Please wait while we get you your schedule.</h3>
+      <h3 class="text-center"><i class="fas fa-spinner-third spin"></i> Thank you for your submission!  Please wait while we get you your schedule.</h3>
       <script>
         window.location.href = "./schedule.php?type=tier1&email=<?php echo urlencode($_POST['tier1_regemail']); ?>";
       </script>
@@ -152,62 +154,96 @@
       <?php exit; endif; ?>
 
       <div class="container">
-        <h3>
-          Attendees
-          <small class="text-muted">Please let us know who will be in attendance.</small>
-        </h3>
-        <p>To access your schedule for this event, please submit your attendee first.</p>
-        <form action="registration.php?submit=true&type=diverse" method="post" class="needs-validation" novalidate>
-          <div class="form-group">
-            <h4>
-              Attendee
-              <small class="text-muted">Required</small>
-            </h4>
-            <div class="form-row">
-              <div class="col">
-                <label for="attendee1_fname">First Name</label>
-                <input type="text" class="form-control" placeholder="First Name" id="attendee1_fname"  name="attendee1_fname" required>
-                <div class="invalid-feedback">
-                  First Name is required.
-                </div>
-              </div>
-              <div class="col">
-                <label for="attendee1_lname">Last Name</label>
-                <input type="text" class="form-control" placeholder="Last Name" id="attendee1_lname" name="attendee1_lname" required>
-                <div class="invalid-feedback">
-                  Last Name is required.
-                </div>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col">
-                <label for="attendee1_title">Title</label>
-                <input type="text" class="form-control" placeholder="Title" id="attendee1_title" name="attendee1_title" required>
-                <div class="invalid-feedback">
-                  Title is required.
-                </div>
-              </div>
-              <div class="col">
-                <label for="attendee1_email">E-Mail Address</label>
-                <input type="email" class="form-control" placeholder="E-Mail Address" id="attendee1_email" name="attendee1_email" required>
-                <div class="invalid-feedback">
-                  E-Mail Address is required.
-                </div>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col">
-                <label for="companyname">Company Name</label>
-                <input type="text" class="form-control" placeholder="Company Name" id="companyname" name="companyname">
-                <div class="invalid-feedback">
-                  Company Name is required.
-                </div>
-              </div>
-            </div>
-            <input type="hidden" name="diverse_regemail" value="<?php echo $regemail; ?>">
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="container" id="rsvp_response_widget">
+          <h3>Will you be in attendance?</h3>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="rsvp_response" id="rsvp_response1" value="yes" required>
+            <label class="form-check-label" for="rsvp_response1">
+              Yes. I will be in attendance.
+            </label>
+            <input class="form-check-input" type="radio" name="rsvp_response" id="rsvp_response2" value="no" required>
+            <label class="form-check-label" for="rsvp_response1">
+              No. I will not be in attendance.
+            </label>
           </div>
-        </form>
+        </div>
+        <div class="container hidden" id="declineresponse_data">
+          <form action="registration.php?submit=true&type=diverse" method="post" class="needs-validation" novalidate>
+            <div class="form-row">
+              <div class="col">
+                <label for="declineselector">Please select a reason you chose not to attend.</label>
+                <select class="custom-select" name="declinereason" id="declinereason">
+                  <option disabled selected>Please select a reason.</option>
+                  <option value="I have another priority">I have another priority</option>
+                </input>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col">
+                <input type="hidden" name="diverse_regemail" value="<?php echo $regemail; ?>">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="container hidden" id="attendee_data">
+          <h3>
+            Attendees
+            <small class="text-muted">Please let us know who will be in attendance.</small>
+          </h3>
+          <p>To access your schedule for this event, please submit your attendee first.</p>
+          <form action="registration.php?submit=true&type=diverse" method="post" class="needs-validation" novalidate>
+            <div class="form-group">
+              <h4>
+                Attendee
+                <small class="text-muted">Required</small>
+              </h4>
+              <div class="form-row">
+                <div class="col">
+                  <label for="attendee1_fname">First Name</label>
+                  <input type="text" class="form-control" placeholder="First Name" id="attendee1_fname"  name="attendee1_fname" required>
+                  <div class="invalid-feedback">
+                    First Name is required.
+                  </div>
+                </div>
+                <div class="col">
+                  <label for="attendee1_lname">Last Name</label>
+                  <input type="text" class="form-control" placeholder="Last Name" id="attendee1_lname" name="attendee1_lname" required>
+                  <div class="invalid-feedback">
+                    Last Name is required.
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <label for="attendee1_title">Title</label>
+                  <input type="text" class="form-control" placeholder="Title" id="attendee1_title" name="attendee1_title" required>
+                  <div class="invalid-feedback">
+                    Title is required.
+                  </div>
+                </div>
+                <div class="col">
+                  <label for="attendee1_email">E-Mail Address</label>
+                  <input type="email" class="form-control" placeholder="E-Mail Address" id="attendee1_email" name="attendee1_email" required>
+                  <div class="invalid-feedback">
+                    E-Mail Address is required.
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <label for="companyname">Company Name</label>
+                  <input type="text" class="form-control" placeholder="Company Name" id="companyname" name="companyname">
+                  <div class="invalid-feedback">
+                    Company Name is required.
+                  </div>
+                </div>
+              </div>
+              <input type="hidden" name="diverse_regemail" value="<?php echo $regemail; ?>">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
     <?php endif; ?>
     <script>
@@ -229,6 +265,18 @@
           });
         }, false);
       })();
+
+      // Allows either the attendees submission form to appear, or decline reason form to appear
+      $('input:radio[name="rsvp_response"]').change(
+      	function(){
+        	if ($(this).val() == 'yes') {
+          	$("div#declineresponse_data").removeClass("hidden");
+            $("div#attendee_data").addClass("hidden");
+          } else if ($(this).val() == 'no') {
+          	$("div#declineresponse_data").addClass("hidden");
+            $("div#attendee_data").removeClass("hidden");
+          }
+        });
     </script>
   </body>
 </html>
