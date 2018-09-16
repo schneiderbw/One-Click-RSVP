@@ -156,18 +156,20 @@
       <div class="container">
         <div class="container" id="rsvp_response_widget">
           <h3>Will you be in attendance?</h3>
-          <div class="form-check-inline row">
-            <div class="col">
-              <input class="form-check-input" type="radio" name="rsvp_response" id="rsvp_response1" value="yes" required>
-              <label class="form-check-label" for="rsvp_response1">
-                Yes. I will be in attendance.
-              </label>
-            </div>
-            <div class="col">
-              <input class="form-check-input" type="radio" name="rsvp_response" id="rsvp_response2" value="no" required>
-              <label class="form-check-label" for="rsvp_response1">
-                No. I will not be in attendance.
-              </label>
+          <div class="form-check-inline">
+            <div class="row">
+              <div class="col">
+                <input class="form-check-input" type="radio" name="rsvp_response" id="rsvp_response1" value="yes" required>
+                <label class="form-check-label" for="rsvp_response1">
+                  Yes. I will be in attendance.
+                </label>
+              </div>
+              <div class="col">
+                <input class="form-check-input" type="radio" name="rsvp_response" id="rsvp_response2" value="no" required>
+                <label class="form-check-label" for="rsvp_response1">
+                  No. I will not be in attendance.
+                </label>
+              </div>
             </div>
           </div>
         </div>
