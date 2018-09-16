@@ -107,6 +107,19 @@
     <?php endif; ?>
     </div>
   </body>
+  <script type="text/javascript">
+    function tConvert (time) {
+      // Check correct time format and split into components
+      time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+      if (time.length > 1) { // If time format correct
+        time = time.slice (1);  // Remove full string match value
+        time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+        time[0] = +time[0] % 12 || 12; // Adjust hours
+      }
+      return time.join (''); // return adjusted time or original string
+    }
+  </script>
   <?php if($suppliertype == "tier1"): ?>
   <script type="text/javascript">
     $(document).ready(function(){
@@ -114,7 +127,7 @@
         var meeting_data = '';
         $.each(data, function(key, value){
           meeting_data += '<tr>';
-          meeting_data += '<td>'+value.meetingtime+'</td>';
+          meeting_data += '<td>'+tConvert(value.meetingtime)+'</td>';
           meeting_data += '<td>'+value.diverse_company+'</td>';
           meeting_data += '<td>'+value.diverse_fname+'</td>';
           meeting_data += '<td>'+value.diverse_lname+'</td>';
@@ -132,7 +145,7 @@
         var meeting_data = '';
         $.each(data, function(key, value){
           meeting_data += '<tr>';
-          meeting_data += '<td>'+value.meetingtime+'</td>';
+          meeting_data += '<td>'+tConvert(value.meetingtime)+'</td>';
           meeting_data += '<td>'+value.tier1_company+'</td>';
           meeting_data += '<td>'+value.tier1_fname+'</td>';
           meeting_data += '<td>'+value.tier1_lname+'</td>';
