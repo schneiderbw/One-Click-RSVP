@@ -23,8 +23,10 @@
       <h1>Opportunity Matching Schedule</h1>
     <?php if($suppliertype == "tier1"): ?>
       <h2>Tier 1 Suppliers</h2>
+    </div>
     <?php elseif($suppliertype == "diverse"): ?>
       <h2>Diverse Suppliers</h2>
+    </div>
     <?php else: ?>
       <h2>Please select the type of vendor you are.</h2>
     </div>
