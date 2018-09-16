@@ -277,8 +277,8 @@
             $("div#declineresponse_data").addClass("hidden");
             $("div#attendee_data").removeClass("hidden");
           } else if ($(this).val() == 'no') {
-          $("div#declineresponse_data").removeClass("hidden");
-          $("div#attendee_data").addClass("hidden");
+            $("div#declineresponse_data").removeClass("hidden");
+            $("div#attendee_data").addClass("hidden");
           }
         });
     </script>
