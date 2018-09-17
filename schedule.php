@@ -6,6 +6,20 @@
   $suppliertype = $_GET["type"];
   $email = $_GET["email"];
 
+  //Get the Company Name from the RSVP registration so we can use it later.
+  if($suppliertype == "tier1"){
+    $email_decoded = urldecode($email);
+    $query = "SELECT companyname FROM tier1_rsvp WHERE (tier1_regemail = '$email_decoded' OR attendee1_email = '$email_decoded' OR attendee2_email = '$email_decoded');";
+    $result = mysqli_fetch_array(mysqli_query($sql_conn, $query),MYSQLI_ASSOC);
+    $usercompany = $result["companyname"];
+  }
+  if($suppliertype == "diverse"){
+    $email_decoded = urldecode($email);
+    $query = "SELECT companyname FROM diverse_rsvp WHERE (diverse_regemail = '$email_decoded' OR attendee1_email = '$email_decoded');";
+    $result = mysqli_fetch_array(mysqli_query($sql_conn, $query),MYSQLI_ASSOC);
+    $usercompany = $result["companyname"];
+  }
+
 ?>
 
 <html>
@@ -62,6 +76,9 @@
     </div>
       <?php elseif($email): ?>
     <div class="container">
+      <div class="header">
+        <h3>Welcome <?php echo $usercompany; ?></h3>
+      </div>
       <div class="header" id="loadscreen">
         <h3><i class="fas fa-spinner-third spin"></i> Please wait while we gather your schedule...</h3>
       </div>
@@ -97,6 +114,9 @@
         </div>
       <?php elseif($email): ?>
     <div class="container">
+      <div class="header">
+        <h3>Welcome <?php echo $usercompany; ?></h3>
+      </div>
       <div class="header" id="loadscreen">
           <h3><i class="fas fa-spinner-third spin"></i> Please wait while we gather your schedule...</h3>
       </div>

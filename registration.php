@@ -8,6 +8,7 @@
 ?>
 
 <?php
+  //Validate registration e-mail address
   if ($suppliertype == "tier1"){
     $validation_query = "SELECT * FROM tier1_invitations WHERE email = '$regemail';";
     if(mysqli_num_rows(mysqli_query($sql_conn,$validation_query)) > 0){
@@ -103,6 +104,7 @@
         <img src="<?php echo $headerlogo; ?>">
         <h1>Attendee Registration</h1>
         <h2>Tier 1 Suppliers</h2>
+        <h4>Welcome <?php echo $usercompany; ?></h4>
       </div>
       <?php if($validation_check == "FALSE"): ?>
         <div class="container">
@@ -207,10 +209,16 @@
 
       </div>
     <?php elseif ($suppliertype == "diverse"): ?>
+      <?php
+        $query = "SELECT company FROM diverse_invitations WHERE email = '$regemail';";
+        $result = mysqli_fetch_array(mysqli_query($sql_conn, $query),MYSQLI_ASSOC);
+        $usercompany = $result["company"];
+      ?>
       <div class="header">
         <img src="<?php echo $headerlogo; ?>">
         <h1>Attendee Registration</h1>
         <h2>Diverse Suppliers</h2>
+        <h4>Welcome <?php echo $usercompany; ?>
       </div>
 
       <?php if($validation_check == "FALSE"): ?>
