@@ -8,6 +8,24 @@
 ?>
 
 <?php
+  if ($suppliertype = "tier1"){
+    $validation_query = "SELECT * FROM tier1_invitations WHERE email = $regemail;";
+    if(mysqli_query($sql_conn,$validation_query)){
+      $validation_check = TRUE;
+    } else {
+      $validation_check = FALSE;
+    }
+  } elseif ($suppliertype = "diverse"){
+    $validation_query = "SELECT * FROM diverse_invitations WHERE email = $regemail;";
+    if(mysqli_query($sql_conn,$validation_query)){
+      $validation_check = TRUE;
+    } else {
+      $validation_check = FALSE;
+    }
+  }
+?>
+
+<?php
   //Handle form submissions here
   if ($_GET["submit"] == "true") {
     if ($suppliertype == "tier1") {
@@ -85,7 +103,15 @@
         <h1>Attendee Registration</h1>
         <h2>Tier 1 Suppliers</h2>
       </div>
-
+      <?php if($validation_check = FALSE): ?>
+      <div class="alert alert-danger" role="alert">
+        <h3 class="alert-heading">Uh oh! Something went wrong!</h3>
+        <p>We apologize, something went wrong when we were validating your invitation.  Please click the link in your e-mail again.</p>
+        <hr>
+        <p>If you have already re-tried the link, please contact Donna Hansee at <a href="mailto:dhansee@techsoftsystems.com&subject=Honda%20Registration%20Issue%20-%20Tier%201%20Supplier">dhansee@techsoftsystems.com</a> for assistance.</p>
+        <p><em>We apologize for any inconvenience</em></p>
+      </div>
+      <?php exit; endif; ?>
       <?php if($sqlsuccessful): ?>
       <h3 class="text-center"><i class="fas fa-spinner-third spin"></i> Thank you for your submission!  Please wait while we get you your schedule.</h3>
       <script>
@@ -183,6 +209,16 @@
         <h1>Attendee Registration</h1>
         <h2>Diverse Suppliers</h2>
       </div>
+
+      <?php if($validation_check = FALSE): ?>
+      <div class="alert alert-danger" role="alert">
+        <h3 class="alert-heading">Uh oh! Something went wrong!</h3>
+        <p>We apologize, something went wrong when we were validating your invitation.  Please click the link in your e-mail again.</p>
+        <hr>
+        <p>If you have already re-tried the link, please contact Donna Hansee at <a href="mailto:dhansee@techsoftsystems.com&subject=Honda%20Registration%20Issue%20-%20Tier%201%20Supplier">dhansee@techsoftsystems.com</a> for assistance.</p>
+        <p><em>We apologize for any inconvenience</em></p>
+      </div>
+      <?php exit; endif; ?>
 
       <?php if($sqlsuccessful): ?>
       <h3 class="text-center">Thank you for your submission!  Please wait while we get you your schedule.</h3>
