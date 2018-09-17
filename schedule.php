@@ -69,6 +69,7 @@
         <tr>
           <th>Time</th>
           <th>Company</th>
+          <th>Website</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>E-Mail</th>
@@ -103,6 +104,7 @@
         <tr>
           <th>Time</th>
           <th>Company</th>
+          <th>Website</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>E-Mail</th>
@@ -143,6 +145,7 @@
           meeting_data += '<tr>';
           meeting_data += '<td>'+tConvert(value.meetingtime)+'</td>';
           meeting_data += '<td>'+value.diverse_company+'</td>';
+          meeting_data += '<td><a href="'+value.diverse_website+'" target="_blank">'+value.diverse_website+'</a></td>';
           meeting_data += '<td>'+value.diverse_fname+'</td>';
           meeting_data += '<td>'+value.diverse_lname+'</td>';
           meeting_data += '<td>'+value.diverse_email+'</td>';
@@ -161,6 +164,7 @@
           meeting_data += '<tr>';
           meeting_data += '<td>'+tConvert(value.meetingtime)+'</td>';
           meeting_data += '<td>'+value.tier1_company+'</td>';
+          meeting_data += '<td><a href="'+value.tier1_website+'" target="_blank">'+value.tier1_website+'</a></td>';
           meeting_data += '<td>'+value.tier1_fname+'</td>';
           meeting_data += '<td>'+value.tier1_lname+'</td>';
           meeting_data += '<td>'+value.tier1_email+'</td>';
