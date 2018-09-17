@@ -9,7 +9,7 @@
 
 <?php
   if ($suppliertype == "tier1"){
-    $validation_query = "SELECT * FROM tier1_invitations WHERE email = $regemail;";
+    $validation_query = "SELECT * FROM tier1_invitations WHERE email = '$regemail';";
     if(mysqli_query($sql_conn,$validation_query)){
       $validation_check = "TRUE";
     } else {
@@ -17,7 +17,7 @@
     }
   }
   if ($suppliertype == "diverse"){
-    $validation_query = "SELECT * FROM diverse_invitations WHERE email = $regemail;";
+    $validation_query = "SELECT * FROM diverse_invitations WHERE email = '$regemail';";
     if(mysqli_query($sql_conn,$validation_query)){
       $validation_check = "TRUE";
     } else {
