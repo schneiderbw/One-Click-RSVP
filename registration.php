@@ -25,6 +25,26 @@
       $validation_check = "FALSE";
     }
   }
+
+  // Check to see if the user has already registered
+  if ($suppliertype == "tier1"){
+    $existingrecord_query = "SELECT * FROM tier1_rsvp WHERE tier1_regemail = '$regemail';";
+    if(mysqli_num_rows(mysqli_query($sql_conn,$existingrecord_query)) > 0){
+      $existingrecord_check = "TRUE";
+      $existingrecord = mysqli_fetch_assoc(mysqli_query($sql_conn,$existingrecord_query));
+    } else {
+      $existingrecord_check = "FALSE";
+    }
+  }
+  if  ($suppliertype == "diverse"){
+    $existingrecord_query = "SELECT * FROM diverse_rsvp WHERE diverse_regemail = '$regemail';";
+    if(mysqli_num_rows(mysqli_query($sql_conn,$existingrecord_query)) > 0){
+      $existingrecord_check = "TRUE";
+      $existingrecord = mysqli_fetch_assoc(mysqli_query($sql_conn,$existingrecord_query));
+    } else {
+      $existingrecord_check = "FALSE";
+    }
+  }
 ?>
 
 <?php
@@ -113,8 +133,67 @@
             <p>We apologize, something went wrong when we were validating your invitation.  Please click the link in your e-mail again.</p>
             <hr>
             <p>If you have already re-tried the link, please contact Donna Hansee at <a class="alert-link" href="mailto:dhansee@techsoftsystems.com&subject=Honda%20Registration%20Issue%20-%20Tier%201%20Supplier">dhansee@techsoftsystems.com</a> for assistance.</p>
-            <p><em>We apologize for any inconvenience</em></p>
+            <p><em>We apologize for any inconvenience.</em></p>
           </div>
+        </div>
+      <?php exit; endif; ?>
+      <?php if($existingrecord_check == "TRUE"): ?>
+        <div class="container">
+          <div class="alert alert-success" role="alert">
+            <h3 class="alert-heading">You are alredy registered!</h3>
+            <p>It appears that your organization, <?php echo $usercompany; ?>, has already registered for this event.  If you need your schedule, <a class="alert-link" href="./schedule.php?type=tier1">click here!</a></p>
+            <hr>
+            <p>If you don't believe you have registered yet, please contact Donna Hansee at <a class="alert-link" href="mailto:dhansee@techsoftsystems.com&subject=Honda%20Registration%20Issue%20-%20Tier%201%20Supplier">dhansee@techsoftsystems.com</a> for assistance.</p>
+            <p><em>Thank you!</em></p>
+          </div>
+        </div>
+        <div class="container">
+          <h4>Attendee 1</h4>
+          <table class="table table-bordered table-striped">
+            <tr>
+              <th>First Name</th>
+              <td><?php echo $existingrecord["attendee1_fname"]; ?></td>
+            </tr>
+            <tr>
+              <th>Last Name</th>
+              <td><?php echo $existingrecord["attendee1_lname"]; ?></td>
+            </tr>
+            <tr>
+              <th>Title</th>
+              <td><?php echo $existingrecord["attendee1_title"]; ?></td>
+            </tr>
+            <tr>
+              <th>Company</th>
+              <td><?php echo $existingrecord["companyname"]; ?></td>
+            </tr>
+            <tr>
+              <th>E-Mail Address</th>
+              <td><?php echo $existingrecord["attendee1_email"]; ?></td>
+            </tr>
+          </table>
+          <h4>Attendee 2</h4>
+          <table class="table table-bordered table-striped">
+            <tr>
+              <th>First Name</th>
+              <td><?php echo $existingrecord["attendee2_fname"]; ?></td>
+            </tr>
+            <tr>
+              <th>Last Name</th>
+              <td><?php echo $existingrecord["attendee2_lname"]; ?></td>
+            </tr>
+            <tr>
+              <th>Title</th>
+              <td><?php echo $existingrecord["attendee2_title"]; ?></td>
+            </tr>
+            <tr>
+              <th>Company</th>
+              <td><?php echo $existingrecord["companyname"]; ?></td>
+            </tr>
+            <tr>
+              <th>E-Mail Address</th>
+              <td><?php echo $existingrecord["attendee2_email"]; ?></td>
+            </tr>
+          </table>
         </div>
       <?php exit; endif; ?>
       <?php if($sqlsuccessful): ?>
@@ -220,19 +299,53 @@
         <h2>Diverse Suppliers</h2>
         <h4>Welcome <?php echo $usercompany; ?>
       </div>
-
       <?php if($validation_check == "FALSE"): ?>
       <div class="container">
         <div class="alert alert-danger" role="alert">
           <h3 class="alert-heading">Uh oh! Something went wrong!</h3>
           <p>We apologize, something went wrong when we were validating your invitation.  Please click the link in your e-mail again.</p>
           <hr>
-          <p>If you have already re-tried the link, please contact Donna Hansee at <a class="alert-link" href="mailto:dhansee@techsoftsystems.com&subject=Honda%20Registration%20Issue%20-%20Tier%201%20Supplier">dhansee@techsoftsystems.com</a> for assistance.</p>
+          <p>If you have already re-tried the link, please contact Donna Hansee at <a class="alert-link" href="mailto:dhansee@techsoftsystems.com&subject=Honda%20Registration%20Issue%20-%20Diverse%20Supplier">dhansee@techsoftsystems.com</a> for assistance.</p>
           <p><em>We apologize for any inconvenience</em></p>
         </div>
       </div>
       <?php exit; endif; ?>
-
+      <?php if($existingrecord_check == "TRUE"): ?>
+        <div class="container">
+          <div class="alert alert-success" role="alert">
+            <h3 class="alert-heading">You are alredy registered!</h3>
+            <p>It appears that your organization, <?php echo $usercompany; ?>, has already registered for this event.  If you need your schedule, <a class="alert-link" href="./schedule.php?type=tier1">click here!</a></p>
+            <hr>
+            <p>If you don't believe you have registered yet, please contact Donna Hansee at <a class="alert-link" href="mailto:dhansee@techsoftsystems.com&subject=Honda%20Registration%20Issue%20-%20Diverse%20Supplier">dhansee@techsoftsystems.com</a> for assistance.</p>
+            <p><em>Thank you!</em></p>
+          </div>
+        </div>
+        <div class="container">
+          <h4>Attendee 1</h4>
+          <table class="table table-bordered table-striped">
+            <tr>
+              <th>First Name</th>
+              <td><?php echo $existingrecord["attendee1_fname"]; ?></td>
+            </tr>
+            <tr>
+              <th>Last Name</th>
+              <td><?php echo $existingrecord["attendee1_lname"]; ?></td>
+            </tr>
+            <tr>
+              <th>Title</th>
+              <td><?php echo $existingrecord["attendee1_title"]; ?></td>
+            </tr>
+            <tr>
+              <th>Company</th>
+              <td><?php echo $existingrecord["companyname"]; ?></td>
+            </tr>
+            <tr>
+              <th>E-Mail Address</th>
+              <td><?php echo $existingrecord["attendee1_email"]; ?></td>
+            </tr>
+          </table>
+        </div>
+      <?php exit; endif; ?>
       <?php if($sqlsuccessful): ?>
       <h3 class="text-center">Thank you for your submission!  Please wait while we get you your schedule.</h3>
       <script>
