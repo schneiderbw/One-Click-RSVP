@@ -314,7 +314,7 @@
         <div class="container">
           <div class="alert alert-success" role="alert">
             <h3 class="alert-heading">You are alredy registered!</h3>
-            <p>It appears that your organization, <?php echo $usercompany; ?>, has already registered for this event.  If you need your schedule, <a class="alert-link" href="./schedule.php?type=tier1">click here!</a></p>
+            <p>It appears that your organization, <?php echo $usercompany; ?>, has already registered for this event.  If you need your schedule, <a class="alert-link" href="./schedule.php?type=diverse">click here!</a></p>
             <hr>
             <p>If you don't believe you have registered yet, please contact Donna Hansee at <a class="alert-link" href="mailto:dhansee@techsoftsystems.com&subject=Honda%20Registration%20Issue%20-%20Diverse%20Supplier">dhansee@techsoftsystems.com</a> for assistance.</p>
             <p><em>Thank you!</em></p>
