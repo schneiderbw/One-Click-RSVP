@@ -8,13 +8,13 @@
 ?>
 
 <?php
-  if ($suppliertype = "tier1"){
+  if ($suppliertype == "tier1"){
     $validation_query = "SELECT * FROM tier1_invitations WHERE email = $regemail;";
     if(!mysqli_query($sql_conn,$validation_query)){
       $validation_check = "FALSE";
     }
   }
-  if ($suppliertype = "diverse"){
+  if ($suppliertype == "diverse"){
     $validation_query = "SELECT * FROM diverse_invitations WHERE email = $regemail;";
     if(!mysqli_query($sql_conn,$validation_query)){
       $validation_check = "FALSE";
@@ -100,7 +100,7 @@
         <h1>Attendee Registration</h1>
         <h2>Tier 1 Suppliers</h2>
       </div>
-      <?php if($validation_check = "FALSE"): ?>
+      <?php if($validation_check == "FALSE"): ?>
         <div class="container">
           <div class="alert alert-danger" role="alert">
             <h3 class="alert-heading">Uh oh! Something went wrong!</h3>
@@ -209,7 +209,7 @@
         <h2>Diverse Suppliers</h2>
       </div>
 
-      <?php if($validation_check = "FALSE"): ?>
+      <?php if($validation_check == "FALSE"): ?>
       <div class="container">
         <div class="alert alert-danger" role="alert">
           <h3 class="alert-heading">Uh oh! Something went wrong!</h3>
