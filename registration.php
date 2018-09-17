@@ -150,46 +150,46 @@
         <div class="container">
           <h4>Attendee 1</h4>
           <table class="table table-bordered table-striped">
-            <tr>
+            <tr width="50%">
               <th>First Name</th>
               <td><?php echo $existingrecord["attendee1_fname"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>Last Name</th>
               <td><?php echo $existingrecord["attendee1_lname"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>Title</th>
               <td><?php echo $existingrecord["attendee1_title"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>Company</th>
               <td><?php echo $existingrecord["companyname"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>E-Mail Address</th>
               <td><?php echo $existingrecord["attendee1_email"]; ?></td>
             </tr>
           </table>
           <h4>Attendee 2</h4>
           <table class="table table-bordered table-striped">
-            <tr>
+            <tr width="50%">
               <th>First Name</th>
               <td><?php echo $existingrecord["attendee2_fname"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>Last Name</th>
               <td><?php echo $existingrecord["attendee2_lname"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>Title</th>
               <td><?php echo $existingrecord["attendee2_title"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>Company</th>
               <td><?php echo $existingrecord["companyname"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>E-Mail Address</th>
               <td><?php echo $existingrecord["attendee2_email"]; ?></td>
             </tr>
@@ -323,23 +323,23 @@
         <div class="container">
           <h4>Attendee 1</h4>
           <table class="table table-bordered table-striped">
-            <tr>
+            <tr width="50%">
               <th>First Name</th>
               <td><?php echo $existingrecord["attendee1_fname"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>Last Name</th>
               <td><?php echo $existingrecord["attendee1_lname"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>Title</th>
               <td><?php echo $existingrecord["attendee1_title"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>Company</th>
               <td><?php echo $existingrecord["companyname"]; ?></td>
             </tr>
-            <tr>
+            <tr width="50%">
               <th>E-Mail Address</th>
               <td><?php echo $existingrecord["attendee1_email"]; ?></td>
             </tr>
