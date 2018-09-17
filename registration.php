@@ -36,8 +36,22 @@
     <link rel="stylesheet" href="css/application.css"></link>
     <?php if($suppliertype == "diverse"): ?>
     <script type="text/javascript">
+    function tConvert (intime) {
+      //Remove the last three characters from the string
+      newtime = intime.slice(0,-3);
+
+      // Check correct time format and split into components
+      time = newtime.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+      if (time.length > 1) { // If time format correct
+        time = time.slice (1);  // Remove full string match value
+        time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+        time[0] = +time[0] % 12 || 12; // Adjust hours
+      }
+      return time.join (''); // return adjusted time or original string
+    }
       $(document).ready(function(){
-        $.getJSON("schedule-query.php?type=<?php echo $suppliertype; ?>&email=<?php echo $regemail; ?>", function(data){
+        $.getJSON("schedule-query.php?type=<?php echo $suppliertype; ?>&email=<?php echo urlencode($regemail); ?>", function(data){
           var meeting_data = '';
           $.each(data, function(key, value){
             meeting_data += '<tr>';
