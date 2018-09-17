@@ -37,7 +37,7 @@
     <?php if($suppliertype == "diverse"): ?>
     <script type="text/javascript">
       $(document).ready(function(){
-        $.getJSON("schedule-query.php?type=<?php echo $suppliertype; ?>&email=<?php echo $email; ?>", function(data){
+        $.getJSON("schedule-query.php?type=<?php echo $suppliertype; ?>&email=<?php echo $regemail; ?>", function(data){
           var meeting_data = '';
           $.each(data, function(key, value){
             meeting_data += '<tr>';
