@@ -34,6 +34,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-9ralMzdK1QYsk4yBY680hmsb4/hJ98xK3w0TIaJ3ll4POWpWUYaA2bRjGGujGT8w" crossorigin="anonymous">
     <link rel="stylesheet" href="css/application.css"></link>
+    <?php elseif($suppliertype == "diverse"): ?>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $.getJSON("schedule-query.php?type=<?php echo $suppliertype; ?>&email=<?php echo $email; ?>", function(data){
+          var meeting_data = '';
+          $.each(data, function(key, value){
+            meeting_data += '<tr>';
+            meeting_data += '<td>'+tConvert(value.meetingtime)+'</td>';
+            meeting_data += '<td>'+value.tier1_company+'</td>';
+            meeting_data += '<td>'+value.tier1_fname+'</td>';
+            meeting_data += '<td>'+value.tier1_lname+'</td>';
+            meeting_data += '<td>'+value.tier1_email+'</td>';
+            meeting_data += '<td>'+value.capability+'</td>';
+          });
+          $('#schedule_table').append(meeting_data);
+        });
+      });
+      $(document).ready(function(){
+        $("div#loadscreen").addClass("hidden");
+        $("table#schedule_table").removeClass("hidden");
+      });
+    </script>
+    <?php endif; ?>
   </head>
   <body>
     <?php if ($suppliertype == "tier1"): ?>
@@ -154,6 +177,21 @@
       <?php exit; endif; ?>
 
       <div class="container">
+        <div class="container" id="loadscreen">
+          <div class="header">
+              <h3><i class="fas fa-spinner-third spin"></i> Please wait while we gather your schedule...</h3>
+          </div>
+        </div>
+        <table class="table table-bordered table-striped hidden" id="schedule_table">
+          <tr>
+            <th>Time</th>
+            <th>Company</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>E-Mail</th>
+            <th>Opportunity Type</th>
+          </tr>
+        </table>
         <div class="container" id="rsvp_response_widget">
           <h3>Will you be in attendance?</h3>
           <div class="form-check-inline">
