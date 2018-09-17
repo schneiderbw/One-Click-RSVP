@@ -34,7 +34,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-9ralMzdK1QYsk4yBY680hmsb4/hJ98xK3w0TIaJ3ll4POWpWUYaA2bRjGGujGT8w" crossorigin="anonymous">
     <link rel="stylesheet" href="css/application.css"></link>
-    <?php elseif($suppliertype == "diverse"): ?>
+    <?php if($suppliertype == "diverse"): ?>
     <script type="text/javascript">
       $(document).ready(function(){
         $.getJSON("schedule-query.php?type=<?php echo $suppliertype; ?>&email=<?php echo $email; ?>", function(data){
