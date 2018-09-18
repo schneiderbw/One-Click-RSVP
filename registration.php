@@ -457,7 +457,11 @@
                 <label for="declineselector">Please select a reason you chose not to attend.</label>
                 <select class="custom-select" name="declinereason" id="declinereason">
                   <option disabled selected>Please select a reason.</option>
-                  <option value="I have another priority">I have another priority</option>
+                  <option value="Schedule Conflict">Schedule Conflict</option>
+                  <option value="Not enough meetings">Not enough meetings</option>
+                  <option value="Too late of notification/invitation">Too late of notification/invitation</option>
+                  <option value="Inconvenient location">Inconvenient location</option>
+                  <option value="Travel expense">Travel expense</option>
                 </input>
               </div>
             </div>
