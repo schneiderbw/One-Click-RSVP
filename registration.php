@@ -55,12 +55,14 @@
       if(mysqli_query($sql_conn,$query)) {
         $sqlsuccessful = True;
         $mailtrain_listid = "B16uVTdW";
-        $mailtrain_fullurl = $mailtrain_url . $mailtrain_listid . "?access_token=" . $mailtrain_accesstoken;
+        $mailtrain_fullurl = $mailtrain_url . "subscribe/" . $mailtrain_listid . "?access_token=" . $mailtrain_accesstoken;
         $attendee1_fields = array(
           'EMAIL' => $_POST['attendee1_email'],
           'FIRST_NAME' => $_POST['attendee1_fname'],
           'LAST_NAME' => $_POST['attendee1_lname'],
           'MERGE_COMPANY' => $_POST['companyname'],
+          'FORCE_SUBSCRIBE' => "yes",
+          'REQUIRE_CONFIRMATION' => "no",
         );
         $attendee1_postvars = http_build_query($attendee1_fields);
 
@@ -78,6 +80,8 @@
             'FIRST_NAME' => $_POST['attendee2_fname'],
             'LAST_NAME' => $_POST['attendee2_lname'],
             'MERGE_COMPANY' => $_POST['companyname'],
+            'FORCE_SUBSCRIBE' => "yes",
+            'REQUIRE_CONFIRMATION' => "no",
           );
           $attendee2_postvars = http_build_query($attendee2_fields);
 
@@ -97,12 +101,14 @@
       if(mysqli_query($sql_conn,$query)) {
         $sqlsuccessful = True;
         $mailtrain_listid = "B16uVTdW";
-        $mailtrain_fullurl = $mailtrain_url . $mailtrain_listid . "?access_token=" . $mailtrain_accesstoken;
+        $mailtrain_fullurl = $mailtrain_url . "subscribe/" . $mailtrain_listid . "?access_token=" . $mailtrain_accesstoken;
         $attendee1_fields = array(
           'EMAIL' => $_POST['attendee1_email'],
           'FIRST_NAME' => $_POST['attendee1_fname'],
           'LAST_NAME' => $_POST['attendee1_lname'],
           'MERGE_COMPANY' => $_POST['companyname'],
+          'FORCE_SUBSCRIBE' => "yes",
+          'REQUIRE_CONFIRMATION' => "no",
         );
         $attendee1_postvars = http_build_query($attendee1_fields);
 
