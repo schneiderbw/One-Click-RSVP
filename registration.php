@@ -54,12 +54,65 @@
       $query = "INSERT INTO tier1_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,attendee2_fname,attendee2_lname,attendee2_title,attendee2_email,companyname,tier1_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['attendee2_fname']."','".$_POST['attendee2_lname']."','".$_POST['attendee2_title']."','".$_POST['attendee2_email']."','".$_POST['companyname']."','".$_POST['tier1_regemail']."');";
       if(mysqli_query($sql_conn,$query)) {
         $sqlsuccessful = True;
+        $mailtrain_listid = "B16uVTdW";
+        $mailtrain_fullurl = $mailtrain_url . $mailtrain_listid . "?access_token=" . $mailtrain_accesstoken;
+        $attendee1_fields = array(
+          'EMAIL' => $_POST['attendee1_email'],
+          'FIRST_NAME' => $_POST['attendee1_fname'],
+          'LAST_NAME' => $_POST['attendee1_lname'],
+          'MERGE_COMPANY' => $_POST['companyname'],
+        );
+        $attendee1_postvars = http_build_query($attendee1_fields);
+
+        $attendee1_ch = curl_init();
+        curl_setopt($attendee1_ch, CURLOPT_URL, $mailtrain_fullurl);
+        curl_setopt($attendee1_ch, CURLOPT_POST, count($attendee1_fields));
+        curl_setopt($attendee1_ch, CURLOPT_POSTFIELDS, $attendee1_postvars);
+
+        $attendee1_curlresult = curl_exec($attendee1_ch);
+        curl_close($attendee1_ch);
+
+        if(!empty($_POST['attendee2_email'])){
+          $attendee2_fields = array(
+            'EMAIL' => $_POST['attendee2_email'],
+            'FIRST_NAME' => $_POST['attendee2_fname'],
+            'LAST_NAME' => $_POST['attendee2_lname'],
+            'MERGE_COMPANY' => $_POST['companyname'],
+          );
+          $attendee2_postvars = http_build_query($attendee2_fields);
+
+          $attendee2_ch = curl_init();
+
+          curl_setopt($attendee2_ch, CURLOPT_URL, $mailtrain_fullurl);
+          curl_setopt($attendee2_ch, CURLOPT_POST, count($attendee2_fields));
+          curl_setopt($attendee2_ch, CURLOPT_POSTFIELDS, $attendee2_postvars);
+
+          $attendee2_curlresult = curl_exec($attendee2_ch);
+          curl_close($attendee2_ch);
+        }
       }
     }
     if ($suppliertype == "diverse") {
       $query = "INSERT INTO diverse_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,companyname,diverse_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['companyname']."','".$_POST['diverse_regemail']."');";
       if(mysqli_query($sql_conn,$query)) {
         $sqlsuccessful = True;
+        $mailtrain_listid = "B16uVTdW";
+        $mailtrain_fullurl = $mailtrain_url . $mailtrain_listid . "?access_token=" . $mailtrain_accesstoken;
+        $attendee1_fields = array(
+          'EMAIL' => $_POST['attendee1_email'],
+          'FIRST_NAME' => $_POST['attendee1_fname'],
+          'LAST_NAME' => $_POST['attendee1_lname'],
+          'MERGE_COMPANY' => $_POST['companyname'],
+        );
+        $attendee1_postvars = http_build_query($attendee1_fields);
+
+        $attendee1_ch = curl_init();
+        curl_setopt($attendee1_ch, CURLOPT_URL, $mailtrain_fullurl);
+        curl_setopt($attendee1_ch, CURLOPT_POST, count($attendee1_fields));
+        curl_setopt($attendee1_ch, CURLOPT_POSTFIELDS, $attendee1_postvars);
+
+        $attendee1_curlresult = curl_exec($attendee1_ch);
+        curl_close($attendee1_ch);
       }
     }
   }
