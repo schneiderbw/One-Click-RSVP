@@ -150,7 +150,7 @@
       return time.join (''); // return adjusted time or original string
     }
       $(document).ready(function(){
-        $.getJSON("schedule-query.php?type=<?php echo $suppliertype; ?>&email=<?php echo urlencode($regemail); ?>", function(data){
+        $.getJSON("schedule-query.php?preview=yes&type=<?php echo $suppliertype; ?>&email=<?php echo urlencode($regemail); ?>", function(data){
           var meeting_data = '';
           $.each(data, function(key, value){
             meeting_data += '<tr>';

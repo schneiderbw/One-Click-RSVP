@@ -5,6 +5,7 @@
   //Let's make the GET information friendlier to access
   $suppliertype = $_GET["type"];
   $useremail = urldecode($_GET["email"]);
+  $preview = $_GET["preview"];
 
   if ($suppliertype == "tier1") {
     //Query table 'tier1_rsvp' for the $useremail variable and return with the tier1_regemail for us to query against the schedule
@@ -21,6 +22,16 @@
     }
     print json_encode($rows);
   } elseif ($suppliertype == "diverse") {
+    if ($preview == "yes"){
+
+      $query = "SELECT * FROM v_scheduledata WHERE diverse_email = '$useremail' ORDER BY meetingtime ASC;";
+      $exec_query = mysqli_query($sql_conn,$query);
+      $rows = array();
+      while($r = mysqli_fetch_assoc($exec_query)){
+        $rows[] = $r;
+      }
+      print json_encode($rows);
+    } else {
     //Query table 'tier1_rsvp' for the $useremail variable and return with the tier1_regemail for us to query against the schedule
     $query_findregemail = "SELECT diverse_regemail FROM diverse_rsvp WHERE '$useremail' IN(attendee1_email,diverse_regemail)";
     $findregemail = mysqli_query($sql_conn,$query_findregemail);
@@ -34,6 +45,7 @@
       $rows[] = $r;
     }
     print json_encode($rows);
+    }
   } else {
     throw new Exception('No supplier type was supplied in the query.  Unable to fetch schedule');
   }
