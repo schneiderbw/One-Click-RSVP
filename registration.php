@@ -53,7 +53,7 @@
     if ($suppliertype == "tier1") {
       $query = "INSERT INTO tier1_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,attendee2_fname,attendee2_lname,attendee2_title,attendee2_email,companyname,tier1_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['attendee2_fname']."','".$_POST['attendee2_lname']."','".$_POST['attendee2_title']."','".$_POST['attendee2_email']."','".$_POST['companyname']."','".$_POST['tier1_regemail']."');";
       if(mysqli_query($sql_conn,$query)) {
-        $sqlsuccessful = True;
+        $sqlsuccessful = "True";
         $mailtrain_listid = "B16uVTdW";
         $mailtrain_fullurl = $mailtrain_url . "subscribe/" . $mailtrain_listid . "?access_token=" . $mailtrain_accesstoken;
         $attendee1_fields = array(
@@ -99,7 +99,7 @@
     if ($suppliertype == "diverse") {
       $query = "INSERT INTO diverse_rsvp (attendee1_fname,attendee1_lname,attendee1_title,attendee1_email,companyname,diverse_regemail) VALUES ('".$_POST['attendee1_fname']."','".$_POST['attendee1_lname']."','".$_POST['attendee1_title']."','".$_POST['attendee1_email']."','".$_POST['companyname']."','".$_POST['diverse_regemail']."');";
       if(mysqli_query($sql_conn,$query)) {
-        $sqlsuccessful = True;
+        $sqlsuccessful = "True";
         $mailtrain_listid = "B16uVTdW";
         $mailtrain_fullurl = $mailtrain_url . "subscribe/" . $mailtrain_listid . "?access_token=" . $mailtrain_accesstoken;
         $attendee1_fields = array(
@@ -185,6 +185,12 @@
         <h2>Tier 1 Suppliers</h2>
         <h4>Welcome <?php echo $usercompany; ?></h4>
       </div>
+      <?php if($sqlsuccessful): ?>
+      <h3 class="text-center"><i class="fas fa-spinner-third spin"></i> Thank you for your submission!  Please wait while we get you your schedule.</h3>
+      <script>
+        window.location.href = "./schedule.php?type=tier1&email=<?php echo urlencode($_POST['tier1_regemail']); ?>";
+      </script>
+      <?php exit; endif; ?>
       <?php if($validation_check == "FALSE"): ?>
         <div class="container">
           <div class="alert alert-danger" role="alert">
@@ -255,12 +261,7 @@
           </table>
         </div>
       <?php exit; endif; ?>
-      <?php if($sqlsuccessful): ?>
-      <h3 class="text-center"><i class="fas fa-spinner-third spin"></i> Thank you for your submission!  Please wait while we get you your schedule.</h3>
-      <script>
-        window.location.href = "./schedule.php?type=tier1&email=<?php echo urlencode($_POST['tier1_regemail']); ?>";
-      </script>
-      <?php exit; endif; ?>
+
 
       <div class="container">
         <h3>
@@ -358,6 +359,12 @@
         <h2>Diverse Suppliers</h2>
         <h4>Welcome <?php echo $usercompany; ?>
       </div>
+      <?php if($sqlsuccessful): ?>
+      <h3 class="text-center">Thank you for your submission!  Please wait while we get you your schedule.</h3>
+      <script>
+        window.location.href = "./schedule.php?type=diverse&email=<?php echo urlencode($_POST['diverse_regemail']); ?>";
+      </script>
+      <?php exit; endif; ?>
       <?php if($validation_check == "FALSE"): ?>
       <div class="container">
         <div class="alert alert-danger" role="alert">
@@ -405,12 +412,7 @@
           </table>
         </div>
       <?php exit; endif; ?>
-      <?php if($sqlsuccessful): ?>
-      <h3 class="text-center">Thank you for your submission!  Please wait while we get you your schedule.</h3>
-      <script>
-        window.location.href = "./schedule.php?type=diverse&email=<?php echo urlencode($_POST['diverse_regemail']); ?>";
-      </script>
-      <?php exit; endif; ?>
+
 
       <div class="container">
         <div class="container" id="loadscreen">
