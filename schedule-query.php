@@ -14,7 +14,7 @@
     $result_findregemail = mysqli_fetch_array($findregemail,MYSQLI_ASSOC);
     $regemail = $result_findregemail["tier1_regemail"];
 
-    $query = "SELECT * FROM v_scheduledata WHERE tier1_email = '$regemail' AND (diverse_rsvp_response = 'yes' OR diverse_rsvp_response IS NULL) ORDER BY meetingtime ASC;";
+    $query = "SELECT * FROM v_scheduledata WHERE tier1_email = '$regemail' ORDER BY meetingtime ASC;";
     $exec_query = mysqli_query($sql_conn,$query);
     $rows = array();
     while($r = mysqli_fetch_assoc($exec_query)){
