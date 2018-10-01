@@ -7,6 +7,9 @@ $eventdatestring = "";
 $eventlocation = "";
 $headerlogo = "./assets/header.png";
 
+$diversereg_closed = "TRUE";
+$tier1reg_closed = "FALSE";
+
 // MySQL Connection Information
 $sql_servername = "localhost";
 $sql_dbname = "hondarsvp2018";

@@ -261,6 +261,17 @@
           </table>
         </div>
       <?php exit; endif; ?>
+      <?php if($existingrecord_check == "FALSE" AND $tier1reg_closed == "TRUE"): ?>
+	     <div class="container">
+		     <div class="alert alert-warning" role="alert">
+			     <h3 class="alert-heading">Registration Has Closed</h3>
+			     <p>It appears that your organization has not yet registered for the event, but registration has been closed by the administrator.  We're very sorry for the inconvenience.</p>
+			     <hr>
+			     <p>If you believe you have reached this message in error, pleace contact Donna Hansee at <a class="alert-link" href="mailto:dhansee@techsoftsystems.com&subject=Honda%20Registration%20Issue%20-%20Diverse%20Supplier">dhansee@techsoftsystems.com</a> for assistance.
+			     <p><em>Thank you!</em></p>
+		     </div>
+	     </div>
+     <?php exit; endif; ?>
 
 
       <div class="container">
