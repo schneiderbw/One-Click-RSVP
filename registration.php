@@ -140,7 +140,7 @@
       newtime = intime.slice(0,-3);
 
       // Check correct time format and split into components
-      time = newtime.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+      time = newtime.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [newtime];
 
       if (time.length > 1) { // If time format correct
         time = time.slice (1);  // Remove full string match value
@@ -269,7 +269,7 @@
           <small class="text-muted">Please let us know who will be in attendance. Minimum 1, Maximum 2.</small>
         </h3>
         <p>To access your schedule for this event, please submit your attendees first.</p>
-        <form action="registration.php?submit=true&type=tier1" method="post" class="needs-validation" novalidate>
+        <form id="registration" action="registration.php?submit=true&type=tier1" method="post" class="needs-validation" novalidate>
           <div class="form-group">
             <h4>
               Attendee 1
@@ -412,7 +412,17 @@
           </table>
         </div>
       <?php exit; endif; ?>
-
+      <?php if($existingrecord_check == "FALSE" AND $diversereg_closed == "TRUE"): ?>
+	     <div class="container">
+		     <div class="alert alert-warning" role="alert">
+			     <h3 class="alert-heading">Registration Has Closed</h3>
+			     <p>It appears that your organization has not yet registered for the event, but registration has been closed by the administrator.  We're very sorry for the inconvenience.</p>
+			     <hr>
+			     <p>If you believe you have reached this message in error, pleace contact Donna Hansee at <a class="alert-link" href="mailto:dhansee@techsoftsystems.com&subject=Honda%20Registration%20Issue%20-%20Diverse%20Supplier">dhansee@techsoftsystems.com</a> for assistance.
+			     <p><em>Thank you!</em></p>
+		     </div>
+	     </div>
+     <?php exit; endif; ?>
 
       <div class="container">
         <div class="container" id="loadscreen">
@@ -433,7 +443,7 @@
         </table>
         <div class="container" id="rsvp_response_widget">
           <h3>Will you be in attendance?</h3>
-          <div class="form-check-inline">
+	  <div class="form-check-inline">
             <div class="row">
               <div class="col">
                 <input class="form-check-input" type="radio" name="rsvp_response" id="rsvp_response1" value="yes" required>
@@ -441,7 +451,12 @@
                   Yes. I will be in attendance.
                 </label>
               </div>
-              <div>
+              <!--[if IE]>
+	      <div class="col">
+	      <![endif]-->
+	      <!--[if !IE]>
+	      <div>
+	      <![endif]-->
                 <input class="form-check-input" type="radio" name="rsvp_response" id="rsvp_response2" value="no" required>
                 <label class="form-check-label" for="rsvp_response1">
                   No. I will not be in attendance.
@@ -451,11 +466,12 @@
           </div>
         </div>
         <div class="container hidden" id="declineresponse_data">
-          <form action="registration.php?submit=true&type=diverse" method="post" class="needs-validation" novalidate>
+          <form id="registration" action="registration.php?submit=true&type=diverse" method="post" class="needs-validation" novalidate>
             <div class="form-row">
               <div class="col">
                 <label for="declineselector">Please select a reason you chose not to attend.</label>
                 <select class="custom-select" name="declinereason" id="declinereason">
+                  <option disabled selected>Please select a reason.</option>
                   <option disabled selected>Please select a reason.</option>
                   <option value="Schedule Conflict">Schedule Conflict</option>
                   <option value="Not enough meetings">Not enough meetings</option>
@@ -479,7 +495,7 @@
             <small class="text-muted">Please let us know who will be in attendance.</small>
           </h3>
           <p>To access your schedule for this event, please submit your attendee first.</p>
-          <form action="registration.php?submit=true&type=diverse" method="post" class="needs-validation" novalidate>
+          <form id="registration" action="registration.php?submit=true&type=diverse" method="post" class="needs-validation" novalidate>
             <div class="form-group">
               <h4>
                 Attendee
@@ -534,6 +550,16 @@
       </div>
     <?php endif; ?>
     <script>
+    $('form#registration').submit(function(e){
+        document.getElementById("submit").setAttribute('disabled', 'disabled');
+    		document.getElementById("submit").innerHTML = '<i class="fas fa-spinner-third spin"></i> Please Wait';
+        e.preventDefault();
+        return false;
+    });
+    if (navigator.appName == "Microsoft Internet Explorer")
+     {
+         alert("Please use Google Chrome or Mozilla Firefox for the best experience with this web page.  Thank you!");
+     }
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
         'use strict';
