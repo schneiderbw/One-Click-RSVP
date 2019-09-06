@@ -5,6 +5,7 @@
   //Let's make the GET information friendlier to access
   $suppliertype = $_GET["type"];
   $email = $_GET["email"];
+  $print = $_GET["print"];
 
   //Get the Company Name from the RSVP registration so we can use it later.
   if($suppliertype == "tier1"){
@@ -82,6 +83,18 @@
       <div class="header" id="loadscreen">
         <h3><i class="fas fa-spinner-third spin"></i> Please wait while we gather your schedule...</h3>
       </div>
+      <?php if($print == "true"):?>
+        <table class="table table-bordered table-striped hidden" id="schedule_table">
+          <tr>
+            <th>Time</th>
+            <th>Company</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>E-Mail</th>
+            <th>Opportunity Type</th>
+          </tr>
+        </table>
+      <?php else:?>
       <table class="table table-bordered table-striped hidden" id="schedule_table">
         <tr>
           <th>Time</th>
@@ -93,6 +106,7 @@
           <th>Opportunity Type</th>
         </tr>
       </table>
+    <?php endif; ?>
     </div>
       <?php endif; ?>
     <?php elseif($suppliertype == "diverse"): ?>
@@ -120,6 +134,18 @@
       <div class="header" id="loadscreen">
           <h3><i class="fas fa-spinner-third spin"></i> Please wait while we gather your schedule...</h3>
       </div>
+      <?php if($print == "true"):?>
+      <table class="table table-bordered table-striped hidden" id="schedule_table">
+        <tr>
+          <th>Time</th>
+          <th>Company</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>E-Mail</th>
+          <th>Opportunity Type</th>
+        </tr>
+      </table>
+      <?php else: ?>
       <table class="table table-bordered table-striped hidden" id="schedule_table">
         <tr>
           <th>Time</th>
@@ -131,6 +157,7 @@
           <th>Opportunity Type</th>
         </tr>
       </table>
+      <?php endif; ?>
     </div>
       <?php endif; ?>
     <?php endif; ?>
@@ -161,9 +188,20 @@
     $(document).ready(function(){
       $.getJSON("schedule-query.php?type=<?php echo $suppliertype; ?>&email=<?php echo $email; ?>", function(data){
         var meeting_data = '';
+        <?php if($print == "true"):?>
         $.each(data, function(key, value){
           meeting_data += '<tr>';
-          meeting_data += '<td>'+tConvert(value.meetingtime)+'</td>';
+          meeting_data += '<td>'+value.meetingtime+'</td>';
+          meeting_data += '<td>'+value.diverse_company+'</td>';
+          meeting_data += '<td>'+value.diverse_fname+'</td>';
+          meeting_data += '<td>'+value.diverse_lname+'</td>';
+          meeting_data += '<td>'+value.diverse_email+'</td>';
+          meeting_data += '<td>'+value.capability+'</td>';
+        });
+        <?php else: ?>
+        $.each(data, function(key, value){
+          meeting_data += '<tr>';
+          meeting_data += '<td>'+value.meetingtime+'</td>';
           meeting_data += '<td>'+value.diverse_company+'</td>';
           meeting_data += '<td><a href="'+value.diverse_website+'" target="_blank">'+value.diverse_website+'</a></td>';
           meeting_data += '<td>'+value.diverse_fname+'</td>';
@@ -171,6 +209,7 @@
           meeting_data += '<td>'+value.diverse_email+'</td>';
           meeting_data += '<td>'+value.capability+'</td>';
         });
+        <?php endif; ?>
         $('#schedule_table').append(meeting_data);
       });
     });
@@ -180,9 +219,21 @@
     $(document).ready(function(){
       $.getJSON("schedule-query.php?type=<?php echo $suppliertype; ?>&email=<?php echo $email; ?>", function(data){
         var meeting_data = '';
+        <?php if($print == "true"): ?>
         $.each(data, function(key, value){
           meeting_data += '<tr>';
-          meeting_data += '<td>'+tConvert(value.meetingtime)+'</td>';
+          meeting_data += '<td>'+value.meetingtime+'</td>';
+          meeting_data += '<td>'+value.tier1_company+'</td>';
+          meeting_data += '<td>'+value.tier1_fname+'</td>';
+          meeting_data += '<td>'+value.tier1_lname+'</td>';
+          meeting_data += '<td>'+value.tier1_email+'</td>';
+          meeting_data += '<td>'+value.capability+'</td>';
+        });
+
+        <?php else: ?>
+        $.each(data, function(key, value){
+          meeting_data += '<tr>';
+          meeting_data += '<td>'+value.meetingtime+'</td>';
           meeting_data += '<td>'+value.tier1_company+'</td>';
           meeting_data += '<td><a href="'+value.tier1_website+'" target="_blank">'+value.tier1_website+'</a></td>';
           meeting_data += '<td>'+value.tier1_fname+'</td>';
@@ -190,9 +241,11 @@
           meeting_data += '<td>'+value.tier1_email+'</td>';
           meeting_data += '<td>'+value.capability+'</td>';
         });
+        <?php endif; ?>
         $('#schedule_table').append(meeting_data);
       });
     });
   </script>
   <?php endif; ?>
 </html>
+

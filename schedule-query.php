@@ -14,7 +14,7 @@
     $result_findregemail = mysqli_fetch_array($findregemail,MYSQLI_ASSOC);
     $regemail = $result_findregemail["tier1_regemail"];
 
-    $query = "SELECT * FROM v_scheduledata WHERE tier1_email = '$regemail' ORDER BY meetingtime ASC;";
+    $query = "SELECT * FROM v_scheduledata_testing WHERE tier1_regemail = '$regemail' ORDER BY meetingtime ASC;";
     $exec_query = mysqli_query($sql_conn,$query);
     $rows = array();
     while($r = mysqli_fetch_assoc($exec_query)){
@@ -24,7 +24,7 @@
   } elseif ($suppliertype == "diverse") {
     if ($preview == "yes"){
 
-      $query = "SELECT * FROM v_scheduledata WHERE diverse_email = '$useremail' ORDER BY meetingtime ASC;";
+      $query = "SELECT * FROM v_scheduledata_testing WHERE diverse_regemail = '$useremail' ORDER BY meetingtime ASC;";
       $exec_query = mysqli_query($sql_conn,$query);
       $rows = array();
       while($r = mysqli_fetch_assoc($exec_query)){
